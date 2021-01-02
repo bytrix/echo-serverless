@@ -1,0 +1,6 @@
+.avatar {
+    width: 24px;
+    border-radius: 100%;
+    cursor: pointer;
+    vertical-align: top;
+}
