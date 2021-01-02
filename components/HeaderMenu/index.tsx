@@ -1,5 +1,8 @@
 import { motion } from "framer-motion"
-import React from "react"
+import React, { useRef, useState } from "react"
+import style from './index.module.css'
+
+const POPUP_WIDTH = 200
 
 const HeaderMenu = ({ children }) => {
     return (
@@ -13,28 +16,71 @@ const HeaderMenu = ({ children }) => {
     )
 }
 
-const Item = ({ children }) => {
+interface ItemProps {
+    children: React.ReactElement
+    popup?: React.ReactElement
+    popupOffset?: [number, number]
+}
+
+const Item = (props: ItemProps) => {
+    const { children, popup, popupOffset } = props
+    const [popupVisible, setPopupVisible] = useState(false)
+    const itemRef = useRef()
     return (
-        <motion.button
-            whileTap={{
-                scale: 0.9
-            }}
-            style={{
-                fontSize: 22,
-                margin: 8,
-                cursor: 'pointer',
-                backgroundColor: 'transparent',
-                border: 'none',
-                outline: 'none'
-            }}
-        >
-            {children}
-        </motion.button>
+        <>
+            <motion.button
+                ref={itemRef}
+                whileTap={{
+                    scale: 0.9
+                }}
+                style={{
+                    fontSize: 22,
+                    margin: 8,
+                    cursor: 'pointer',
+                    backgroundColor: 'transparent',
+                    // backgroundColor: 'blue',
+                    border: 'none',
+                    outline: 'none'
+                }}
+                onClick={() => {
+                    setPopupVisible(true)
+                }}
+                onBlur={() => {
+                    setPopupVisible(false)
+                }}
+            >
+                {children}
+            </motion.button>
+            {popup && popupVisible && (
+                <motion.div
+                    className={style.popup}
+                    style={{
+                        position: 'absolute',
+                        borderRadius: 4,
+                        width: POPUP_WIDTH,
+                        zIndex: 0,
+                        boxShadow: '0 2px 12px -2px rgba(0,0,0,0.2)',
+                        top: itemRef.current.offsetTop + itemRef.current.offsetHeight + popupOffset[0],
+                        left: itemRef.current.offsetLeft - (POPUP_WIDTH - itemRef.current.offsetWidth) + popupOffset[1]
+                    }}
+                    initial={{
+                        y: 3
+                    }}
+                    animate={{
+                        y: 0
+                    }}
+                    onMouseDown={(e) => {
+                        e.preventDefault()
+                        setPopupVisible(true)
+                    }}
+                >
+                    {popup}
+                </motion.div>
+            )}
+        </>
     )
 }
 
-export {
-    Item
-}
+HeaderMenu.Item = Item
 
 export default HeaderMenu
