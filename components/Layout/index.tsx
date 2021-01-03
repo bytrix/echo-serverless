@@ -3,10 +3,9 @@ import { AiOutlineHome } from 'react-icons/ai'
 import { BiSun } from 'react-icons/bi'
 import { BsBell } from 'react-icons/bs'
 import { RiUserSmileLine } from 'react-icons/ri'
-import Dropdown from '../Dropdown'
 import HeaderMenu from '../HeaderMenu'
 import Menu from '../Menu'
-import Navigation, { Item as NavigationItem } from '../Navigation'
+import Navigation from '../Navigation'
 
 const menu = (
     <Menu>
@@ -17,8 +16,6 @@ const menu = (
         <Menu.Item>退出</Menu.Item>
     </Menu>
 )
-
-// const menu = () => <h1>menu</h1>
 
 const Layout = (props) => {
     const { children } = props
@@ -37,12 +34,12 @@ const Layout = (props) => {
             >
                 <h1>小纸团</h1>
                 <Navigation>
-                    <NavigationItem href='/'>
+                    <Navigation.Item href='/'>
                         <AiOutlineHome />
-                    </NavigationItem>
-                    <NavigationItem href='/explore'>
+                    </Navigation.Item>
+                    <Navigation.Item href='/explore'>
                         <BiSun />
-                    </NavigationItem>
+                    </Navigation.Item>
                 </Navigation>
                 <HeaderMenu>
                     <HeaderMenu.Item>
@@ -53,11 +50,6 @@ const Layout = (props) => {
                         popupOffset={[10, 10]}
                     >
                         <RiUserSmileLine />
-                        {/* <Dropdown
-                            popup={<span style={{ backgroundColor: 'red' }}>popup</span>}
-                        >
-                            <RiUserSmileLine />
-                        </Dropdown> */}
                     </HeaderMenu.Item>
                 </HeaderMenu>
             </div>

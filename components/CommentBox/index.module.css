@@ -1,0 +1,40 @@
+.commentWrapper {
+  margin: 24px;
+  margin-right: 12px;
+  flex: 1;
+  height: 451px;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+.commentWrapper::-webkit-scrollbar {
+  width: 2px;
+}
+.commentWrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.sendBox {
+    display: flex;
+}
+.sendBox > input {
+    border: none;
+    padding: 12px;
+    outline: none;
+    width: 100%;
+}
+.sendBox > input::placeholder {
+    color: rgba(0,0,0,0.2);
+}
+
+.sendBox > button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 12px;
+    outline: none;
+    width: 60px;
+}
+.sendBox > button:disabled {
+    cursor: default;
+    color: rgba(0,0,0,0.2);
+}

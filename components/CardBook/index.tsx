@@ -30,10 +30,11 @@ interface CardBookProps {
     onLoad?: Function
     // user?: any,
     // count?: any
+    onClick: Function
 }
 
 const CardBook = (props: CardBookProps) => {
-    const { store, onLoad, post } = props
+    const { store, onLoad, post, onClick } = props
     const { title, image, count, user, type } = post
     // const { PostModalStore } = store
     const [ like, setLike ] = useState(false)
@@ -42,10 +43,11 @@ const CardBook = (props: CardBookProps) => {
         <div className={style.cardWrapper}>
             <CardImage
                 src={image}
-                onClick={() => {
-                    // console.log('PostModalStore', PostModalStore)
-                    // PostModalStore.open()
-                }}
+                // onClick={() => {
+                //     // console.log('PostModalStore', PostModalStore)
+                //     // PostModalStore.open()
+                // }}
+                onClick={onClick}
                 onLoad={onLoad}
                 type={type}
                 showImageIcon={count.images > 1}

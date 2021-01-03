@@ -14,25 +14,28 @@ const Navigation = ({ children }) => {
     )
 }
 
-const Item = ({ children, href }) => {
-    console.log('children', children)
+interface ItemProps {
+    children: React.ReactElement
+    href: string
+}
+
+const Item = (props: ItemProps) => {
+    const { children, href } = props
     const router = useRouter()
     return (
         <Link href={href}>
-            {React.cloneElement(children, {
-                style: {
-                    color: router.pathname === href ? 'black' : 'rgba(0,0,0,0.3)',
-                    margin: 8,
-                    cursor: 'pointer',
-                    fontSize: 24,
-                }
-            })}
+            <span style={{
+                color: router.pathname === href ? 'black' : 'rgba(0,0,0,0.3)',
+                margin: 8,
+                cursor: 'pointer',
+                fontSize: 24,
+            }}>
+                {children}
+            </span>
         </Link>
     )
 }
 
-export {
-    Item
-}
+Navigation.Item = Item
 
 export default Navigation

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import React, { useRef, useState } from "react"
 import style from './index.module.css'
 
@@ -25,7 +25,8 @@ interface ItemProps {
 const Item = (props: ItemProps) => {
     const { children, popup, popupOffset } = props
     const [popupVisible, setPopupVisible] = useState(false)
-    const itemRef = useRef()
+    const itemRef = useRef<HTMLButtonElement>()
+    const itemDom = itemRef.current
     return (
         <>
             <motion.button
@@ -51,32 +52,38 @@ const Item = (props: ItemProps) => {
             >
                 {children}
             </motion.button>
-            {popup && popupVisible && (
-                <motion.div
-                    className={style.popup}
-                    style={{
-                        position: 'absolute',
-                        borderRadius: 4,
-                        width: POPUP_WIDTH,
-                        zIndex: 0,
-                        boxShadow: '0 2px 12px -2px rgba(0,0,0,0.2)',
-                        top: itemRef.current.offsetTop + itemRef.current.offsetHeight + popupOffset[0],
-                        left: itemRef.current.offsetLeft - (POPUP_WIDTH - itemRef.current.offsetWidth) + popupOffset[1]
-                    }}
-                    initial={{
-                        y: 3
-                    }}
-                    animate={{
-                        y: 0
-                    }}
-                    onMouseDown={(e) => {
-                        e.preventDefault()
-                        setPopupVisible(true)
-                    }}
-                >
-                    {popup}
-                </motion.div>
-            )}
+            <AnimatePresence>
+                {popup && popupVisible && (
+                    <motion.div
+                        className={style.popup}
+                        style={{
+                            position: 'absolute',
+                            borderRadius: 4,
+                            width: POPUP_WIDTH,
+                            zIndex: 0,
+                            // boxShadow: '0 12px 36px -2px rgba(0,0,0,0.2)',
+                            boxShadow: '0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05)',
+                            top: itemDom?.offsetTop + itemDom?.offsetHeight + popupOffset[0],
+                            left: itemDom?.offsetLeft - (POPUP_WIDTH - itemDom?.offsetWidth) + popupOffset[1]
+                        }}
+                        initial={{
+                            y: 3
+                        }}
+                        animate={{
+                            y: 0
+                        }}
+                        exit={{
+                            y: 3
+                        }}
+                        onMouseDown={(e) => {
+                            e.preventDefault()
+                            setPopupVisible(true)
+                        }}
+                    >
+                        {popup}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     )
 }

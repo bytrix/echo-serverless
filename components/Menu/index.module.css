@@ -5,9 +5,11 @@
 }
 
 .item {
+    font-weight: 300;
+    font-size: 0.9rem;
     list-style-type: none;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 8px 20px;
     transition: 0.2s;
     background-color: white;
     z-index: 9999999;
@@ -22,6 +24,6 @@
 }
 
 .item:hover {
-    background-color: #fafafa;
+    background-color: #f9f9f9;
     /* background-color: red; */
 }
