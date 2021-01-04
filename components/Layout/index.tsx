@@ -1,19 +1,31 @@
 import React from 'react'
-import { AiOutlineHome } from 'react-icons/ai'
-import { BiSun } from 'react-icons/bi'
-import { BsBell } from 'react-icons/bs'
-import { RiUserSmileLine } from 'react-icons/ri'
+import { AiOutlineHome, AiOutlinePlusCircle } from 'react-icons/ai'
+import { BiLogOutCircle, BiSun } from 'react-icons/bi'
+import { BsBell, BsBookmark } from 'react-icons/bs'
+import { RiUserSmileFill, RiUserSmileLine } from 'react-icons/ri'
+import { VscAccount } from 'react-icons/vsc'
 import HeaderMenu from '../HeaderMenu'
 import Menu from '../Menu'
 import Navigation from '../Navigation'
 
 const menu = (
     <Menu>
-        <Menu.Item>个人主页</Menu.Item>
-        <Menu.Item>收藏夹</Menu.Item>
-        <Menu.Item>设置</Menu.Item>
-        <Menu.Item>切换账户</Menu.Item>
-        <Menu.Item>退出</Menu.Item>
+        <Menu.Item>
+            <AiOutlinePlusCircle />
+            发布纸条
+        </Menu.Item>
+        <Menu.Item>
+            <BsBookmark />
+            收藏夹
+        </Menu.Item>
+        <Menu.Item>
+            <VscAccount />
+            账号设置
+        </Menu.Item>
+        <Menu.Item>
+            <BiLogOutCircle />
+            退出
+        </Menu.Item>
     </Menu>
 )
 
@@ -48,6 +60,7 @@ const Layout = (props) => {
                     <HeaderMenu.Item
                         popup={menu}
                         popupOffset={[10, 10]}
+                        activeItem={<RiUserSmileFill />}
                     >
                         <RiUserSmileLine />
                     </HeaderMenu.Item>

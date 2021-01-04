@@ -1,3 +1,6 @@
+@import "rc-dialog.css";
+@import "theme.css";
+
 html,
 body {
   padding: 0;
@@ -8,98 +11,6 @@ body {
 
 * {
   box-sizing: border-box;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes zoomOut {
-  from {
-    transform: scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-}
-
-.rc-dialog-zoom,
-.rc-dialog-zoom-appear,
-.rc-dialog-zoom-appear-active {
-  animation: zoomIn 0.2s;
-}
-
-.rc-dialog-zoom-leave,
-.rc-dialog-zoom-leave-active {
-  animation: zoomOut 0.2s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.rc-dialog-fade,
-.rc-dialog-fade-appear,
-.rc-dialog-fade-appear-active {
-  animation: fadeIn 0.2s;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.rc-dialog-fade-leave,
-.rc-dialog-fade-leave-active {
-  animation: fadeOut 0.2s;
-}
-
-
-div[tabindex] {
-  outline: none;
-}
-
-.rc-dialog-close {
-  width: 14px;
-  height: 14px;
-  padding: 0px;
-  border-radius: 50%;
-  border: none;
-  position: absolute;
-  right: 0px;
-  outline: none;
-  color: rgba(0,0,0,0);
-  transition: 0.25s;
-  background-color: rgba(0,0,0,0.1);
-  margin: 6px;
-}
-.rc-dialog-close:hover {
-  color: rgba(0,0,0,0.15);
-}
-.rc-dialog-close:focus {
-  background-color: rgba(0,0,0,0.2);
-}
-.rc-dialog-title {
-  font-weight: bold;
-  text-align: center;
 }
 
 .container {
@@ -137,16 +48,6 @@ footer a {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  /* color: rgba(0,0,0,0.5); */
-}
-a:hover {
-  text-decoration: underline;
-  /* color: rgba(0,0,0,0.7); */
 }
 
 .title a {

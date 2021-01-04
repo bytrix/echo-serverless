@@ -9,7 +9,7 @@
     height: 24px;
     line-height: 24px;
     display: inline-block;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: rgba(0,0,0,0.5);
     margin-left: 4px;;
 }
@@ -18,7 +18,7 @@
     cursor: pointer;
 }
 
-.cartTitle {
+.cardTitle {
     text-align: left;
     padding: 6px;
     display: block;
@@ -30,5 +30,4 @@
     padding: 10px;
     break-inside: avoid;
     position: relative;
-    /* background-color: blue; */
 }

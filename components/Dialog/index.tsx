@@ -32,17 +32,20 @@ export default (props: DialogProps) => {
                     width: 900,
                     margin: '0 auto',
                     outline: 'none',
-                    top: -290,
+                    top: 45,
                     padding: 0,
                     boxShadow: '0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05)',
                     borderRadius: 4,
                 }}
                 maskStyle={{
                     backgroundColor: 'rgba(255,255,255,0.8)',
-                    position: 'absolute',
+                    position: 'fixed',
                     width: '100%',
                     height: '100%',
-                    top: 0
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0
                 }}
                 title={title}
                 onClose={e => {

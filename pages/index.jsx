@@ -38,12 +38,12 @@ const App = (props) => {
           },
           {
             id: 2,
-            title: 'title',
-            image: '//aa',
+            title: '大理民宿|住进🌊《心花怒放》电影拍摄地',
+            image: 'https://ci.xiaohongshu.com/933aeb95-8128-229e-b655-f16ad03b3192?imageView2/2/w/1080/format/jpg',
             type: 'image',
             user: {
-                username: 'username',
-                avatar: '//aa'
+                username: '迟到大王Summer',
+                avatar: 'https://img.xiaohongshu.com/avatar/5d6f4ba3bded9900013cfda9.jpg@240w_240h_90q_1e_1c_1x.jpg'
             },
             count: {
                 likes: 1

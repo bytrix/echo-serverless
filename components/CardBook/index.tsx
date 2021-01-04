@@ -1,12 +1,10 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
-import { AiFillHeart, AiFillStar, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai';
-import CardImage from './CardImage';
-// import styled from 'styled-components';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import Skeleton from '../Skeleton';
 import CardActionButton from './CardActionButton';
-// import { Link } from 'react-router-dom';
-import Link from 'next/link'
-import Avatar from '../Avatar';
-import style from './index.module.css'
+import CardImage from './CardImage';
+import style from './index.module.css';
 
 interface UserProps {
     username: string
@@ -58,18 +56,22 @@ const CardBook = (props: CardBookProps) => {
             }}>
                 <div className={style.user}>
                     <Link href='/user'>
-                        <div>
-                            <Avatar
-                                // style={{
-                                //     width: '10px'
-                                // }}
+                        <span>
+                            <Skeleton.Image
+                                width={24}
+                                height={24}
+                                style={{
+                                    borderRadius: '50%',
+                                    verticalAlign: 'top',
+                                    cursor: 'pointer'
+                                }}
                                 src="https://img.xiaohongshu.com/avatar/5f75d88ca8204500012c1379.jpg@240w_240h_90q_1e_1c_1x.jpg"
-                                // src={user.avatar}
-                                />
-                            <span className={style.username}>{user.username}</span>
-                        </div>
+                            />
+                        </span>
                     </Link>
-                    {/* <Username to='/user'>{user.username}</Username> */}
+                    <Link href='/user'>
+                        <span className={style.username}>{user.username}</span>
+                    </Link>
                 </div>
                 <CardActionButton
                     defaultIcon={<AiOutlineHeart />}
@@ -85,7 +87,7 @@ const CardBook = (props: CardBookProps) => {
                         }
                     }}
                 />
-                <CardActionButton
+                {/* <CardActionButton
                     defaultIcon={<AiOutlineStar />}
                     activeIcon={<AiFillStar />}
                     color='#FAC35B'
@@ -98,7 +100,7 @@ const CardBook = (props: CardBookProps) => {
                             setCollect(true)
                         }
                     }}
-                />
+                /> */}
             </div>
         </div>
     )

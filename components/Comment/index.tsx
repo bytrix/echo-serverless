@@ -1,3 +1,5 @@
+import Skeleton from "../Skeleton"
+
 const Comment = (props) => {
     const { text } = props
     return (
@@ -8,7 +10,7 @@ const Comment = (props) => {
                     marginBottom: 24
                 }}
             >
-                <img
+                <Skeleton.Image
                     width={36}
                     height={36}
                     src='https://img.xiaohongshu.com/avatar/5f86871900000000010035f5.jpg@240w_240h_90q_1e_1c_1x.jpg'
@@ -21,6 +23,7 @@ const Comment = (props) => {
                         marginLeft: 12,
                         verticalAlign: 'bottom',
                         fontSize: '0.9rem',
+                        flex: 1
                     }}
                 >
                     <a href='/a' style={{

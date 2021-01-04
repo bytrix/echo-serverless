@@ -20,11 +20,13 @@ interface ItemProps {
     children: React.ReactElement
     popup?: React.ReactElement
     popupOffset?: [number, number]
+    activeItem?: React.ReactElement
 }
 
 const Item = (props: ItemProps) => {
-    const { children, popup, popupOffset } = props
+    const { children, popup, popupOffset, activeItem } = props
     const [popupVisible, setPopupVisible] = useState(false)
+    const [focused, setFocused] = useState(false)
     const itemRef = useRef<HTMLButtonElement>()
     const itemDom = itemRef.current
     return (
@@ -39,18 +41,19 @@ const Item = (props: ItemProps) => {
                     margin: 8,
                     cursor: 'pointer',
                     backgroundColor: 'transparent',
-                    // backgroundColor: 'blue',
                     border: 'none',
                     outline: 'none'
                 }}
                 onClick={() => {
-                    setPopupVisible(true)
+                    setPopupVisible(!popupVisible)
+                    setFocused(!focused)
                 }}
                 onBlur={() => {
                     setPopupVisible(false)
+                    setFocused(false)
                 }}
             >
-                {children}
+                {(focused && activeItem) ? activeItem : children}
             </motion.button>
             <AnimatePresence>
                 {popup && popupVisible && (
