@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import Skeleton from '../Skeleton';
 import CardActionButton from './CardActionButton';
 import CardImage from './CardImage';
@@ -19,16 +19,12 @@ interface PostProps {
     type: 'image' | 'video'
 }
 
-interface CardBookProps {
-    // src: string,
-    // title: string,
+export interface CardBookProps {
     post: PostProps
     store?: any
     loading?: boolean
     onLoad?: Function
-    // user?: any,
-    // count?: any
-    onClick: Function
+    onClick?: Function
 }
 
 const CardBook = (props: CardBookProps) => {
@@ -50,7 +46,10 @@ const CardBook = (props: CardBookProps) => {
                 type={type}
                 showImageIcon={count.images > 1}
             />
-            <div className={style.cardTitle}>{title}</div>
+            <div className={style.cardTitle}>
+                {/* <Skeleton.Span width={160} /> */}
+                {title}
+            </div>
             <div style={{
                 display: 'flex'
             }}>
@@ -63,16 +62,25 @@ const CardBook = (props: CardBookProps) => {
                                 style={{
                                     borderRadius: '50%',
                                     verticalAlign: 'top',
+                                    marginRight: 6,
                                     cursor: 'pointer'
                                 }}
-                                src="https://img.xiaohongshu.com/avatar/5f75d88ca8204500012c1379.jpg@240w_240h_90q_1e_1c_1x.jpg"
+                                // src="https://img.xiaohongshu.com/avatar/5f75d88ca8204500012c1379.jpg@240w_240h_90q_1e_1c_1x.jpg"
+                                src={image}
                             />
                         </span>
                     </Link>
                     <Link href='/user'>
+                        {/* <Skeleton.Span
+                            width={100}
+                            // style={{
+                            //     marginLeft: 12
+                            // }}
+                        /> */}
                         <span className={style.username}>{user.username}</span>
                     </Link>
                 </div>
+                {/* <Skeleton.Span width={24} /> */}
                 <CardActionButton
                     defaultIcon={<AiOutlineHeart />}
                     activeIcon={<AiFillHeart />}

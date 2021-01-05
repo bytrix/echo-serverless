@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { AiOutlineHome, AiOutlinePlusCircle } from 'react-icons/ai'
 import { BiLogOutCircle, BiSun } from 'react-icons/bi'
@@ -16,7 +17,7 @@ const menu = (
         </Menu.Item>
         <Menu.Item>
             <BsBookmark />
-            收藏夹
+            我的收藏
         </Menu.Item>
         <Menu.Item>
             <VscAccount />
@@ -24,7 +25,7 @@ const menu = (
         </Menu.Item>
         <Menu.Item>
             <BiLogOutCircle />
-            退出
+            退出登陆
         </Menu.Item>
     </Menu>
 )
@@ -44,7 +45,11 @@ const Layout = (props) => {
                     justifyContent: 'space-between'
                 }}
             >
-                <h1>小纸团</h1>
+                <Link href='/'>
+                    <h1 style={{
+                        cursor: 'pointer'
+                    }}>小纸团</h1>
+                </Link>
                 <Navigation>
                     <Navigation.Item href='/'>
                         <AiOutlineHome />
@@ -53,7 +58,7 @@ const Layout = (props) => {
                         <BiSun />
                     </Navigation.Item>
                 </Navigation>
-                <HeaderMenu>
+                <HeaderMenu width={160}>
                     <HeaderMenu.Item>
                         <BsBell />
                     </HeaderMenu.Item>

@@ -1,16 +1,18 @@
-import CardBook from "../CardBook"
+interface WaterfallProps {
+    dataSource: Array<any>
+    renderItem: (item: any) => JSX.Element
+}
 
-const Waterfall = (props) => {
+const Waterfall = (props: WaterfallProps) => {
     const { dataSource, renderItem } = props
     return (
         <div
             style={{
-                // backgroundColor: 'red',
                 width: 930,
                 columnCount: 4
             }}
         >
-            {dataSource.map(item => renderItem(item))}
+            {dataSource && dataSource.map(item => renderItem(item))}
         </div>
     )
 }

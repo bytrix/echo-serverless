@@ -1,0 +1,42 @@
+body {
+    --tooltip-color: black;
+}
+
+@keyframes enter {
+    from {
+        /* transform: scale(0.8) */
+        opacity: 0;
+    }
+    to {
+        /* transform: scale(1) */
+        opacity: 1;
+    }
+}
+@keyframes leave {
+    from {
+        /* transform: scale(1) */
+        opacity: 1;
+    }
+    to {
+        /* transform: scale(0.8) */
+        opacity: 0;
+    }
+}
+
+.rc-tooltip-animate,
+.rc-tooltip-animate-enter,
+.rc-tooltip-animate-enter-active {
+    animation: enter 0.2s;
+}
+
+.rc-tooltip-animate-leave,
+.rc-tooltip-animate-leave-active {
+    animation: leave 0.2s;
+}
+
+.rc-tooltip-inner {
+    background-color: var(--tooltip-color) !important;
+}
+.rc-tooltip-arrow {
+    border-right-color: var(--tooltip-color) !important;
+}

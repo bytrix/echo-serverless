@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
-import styled from 'styled-components'
+// import styled from 'styled-components'
+import styles from './index.module.css'
 
 interface CardActionButtonProps {
     defaultIcon: React.ReactElement
@@ -40,7 +41,7 @@ const CardActionButton = (props: CardActionButtonProps) => {
                     fontSize: '0.9rem'
                 }}
             >{value}</span> */}
-            <Number color={active ? color : 'rgba(0,0,0,0.3)'}>
+            <Number activeColor={active && color}>
                 {value}
             </Number>
         </motion.button>
@@ -49,10 +50,18 @@ const CardActionButton = (props: CardActionButtonProps) => {
 
 export default CardActionButton;
 
-const Number = styled.span`
-    color: ${props => props.color};
-    line-height: 24px;
-    margin-left: 2px;
-    vertical-align: 0.26em;
-    font-size: 0.9rem;
-`;
+// const Number = styled.span`
+//     color: ${props => props.color};
+//     line-height: 24px;
+//     margin-left: 2px;
+//     vertical-align: 0.26em;
+//     font-size: 0.9rem;
+// `;
+
+const Number = ({ children, activeColor }) => (
+    <span
+        style={{
+            color: activeColor || 'rgba(0,0,0,0.3)'
+        }}
+        className={styles.number}>{children}</span>
+)

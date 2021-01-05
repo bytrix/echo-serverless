@@ -1,5 +1,6 @@
-@import "rc-dialog.css";
 @import "theme.css";
+@import "rc-dialog.css";
+@import "rc-tooltip.css";
 
 html,
 body {
