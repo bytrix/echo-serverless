@@ -1,0 +1,21 @@
+.point {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+.point::after {
+    content: '';
+    background-color: black;
+    width: 10px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    margin: 0 45px;
+    border-radius: 50%;
+    bottom: -15px;
+}
+
+input.title {
+    display: block;
+    margin-bottom: 12px;
+}

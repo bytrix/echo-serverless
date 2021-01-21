@@ -3,10 +3,15 @@ import CardBook from '../components/CardBook'
 import Layout from '../components/Layout'
 import PostDialog from '../components/PostDialog'
 import Waterfall from '../components/Waterfall'
+import React, { useEffect } from 'react'
 
 const App = (props) => {
   const { store } = props
-  const { PostDialogStore } = store
+  const { PostDialogStore, PostStore } = store
+  useEffect(() => {
+    // console.log('props', props)
+    PostStore.getPosts();
+  }, []);
   return (
     <Layout>
       <PostDialog

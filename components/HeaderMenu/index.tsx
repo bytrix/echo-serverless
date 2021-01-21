@@ -10,8 +10,9 @@ interface HeaderMenuProps {
 const HeaderMenu = (props: HeaderMenuProps) => {
     let { children, width = 200 } = props
     if(children instanceof Array) {
-        children = children.map(child => React.cloneElement(child, {
-            popupWidth: width
+        children = children.map((child, i) => React.cloneElement(child, {
+            popupWidth: width,
+            key: i
         }))
     }
     return (

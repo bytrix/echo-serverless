@@ -12,7 +12,7 @@ interface DialogProps {
     image?: string
 }
 
-export default (props: DialogProps) => {
+const Dialog = (props: DialogProps) => {
     const { title, children, image, visible, onClose } = props
     // useEffect(() => {
     //     if(visible) {
@@ -20,7 +20,7 @@ export default (props: DialogProps) => {
     //     }
     // }, [visible])
     return (
-        <div>
+        // <div>
             <RcDialog
                 closeIcon={<IoIosClose />}
                 visible={visible}
@@ -55,6 +55,8 @@ export default (props: DialogProps) => {
             >
                 {children}
             </RcDialog>
-        </div>
+        // </div>
     )
 }
+
+export default Dialog

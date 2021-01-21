@@ -1,0 +1,33 @@
+$width: 100px;
+$height: 50px;
+
+$_point_size: 5px;
+
+.tab {
+    border: none;
+    background-color: transparent;
+    padding: 0px;
+    cursor: pointer;
+    outline: none;
+    width: $width;
+    height: $height;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.activeTab {
+    /* background-color: rgba(0,0,0,0.1); */
+}
+
+.activeTab::after {
+    content: '';
+    width: $_point_size;
+    height: $_point_size;
+    background-color: black;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    /* bottom: -5px; */
+    // margin: 0 47.5px;
+    margin: 0 ($width - $_point_size) / 2;
+}

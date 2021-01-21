@@ -7,10 +7,18 @@ const Menu = ({ children }) => {
     )
 }
 
-const Item = ({ children }) => {
+interface ItemProps {
+    children: any
+    onClick?: (event: React.MouseEvent) => void
+}
+
+const Item = (props: ItemProps) => {
+    const { children, onClick } = props
     if(children instanceof Array) {
         return (
-            <li className={style.item}>
+            <li
+                onClick={onClick}
+                className={style.item}>
                 {React.cloneElement(children[0], {
                     style: {
                         marginRight: 10,

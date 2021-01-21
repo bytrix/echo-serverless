@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { HTMLAttributes } from 'react'
 import { AiOutlineHome, AiOutlinePlusCircle } from 'react-icons/ai'
 import { BiLogOutCircle, BiSun } from 'react-icons/bi'
 import { BsBell, BsBookmark } from 'react-icons/bs'
@@ -9,34 +10,42 @@ import HeaderMenu from '../HeaderMenu'
 import Menu from '../Menu'
 import Navigation from '../Navigation'
 
-const menu = (
-    <Menu>
-        <Menu.Item>
-            <AiOutlinePlusCircle />
-            发布纸条
-        </Menu.Item>
-        <Menu.Item>
-            <BsBookmark />
-            我的收藏
-        </Menu.Item>
-        <Menu.Item>
-            <VscAccount />
-            账号设置
-        </Menu.Item>
-        <Menu.Item>
-            <BiLogOutCircle />
-            退出登陆
-        </Menu.Item>
-    </Menu>
-)
 
-const Layout = (props) => {
+const PrimaryMenu = () => {
+    const router = useRouter()
+    return (
+        <Menu>
+            <Menu.Item
+                onClick={() => {
+                    router.push('/create')
+                }}
+            >
+                <AiOutlinePlusCircle />
+                发布纸条
+            </Menu.Item>
+            <Menu.Item>
+                <BsBookmark />
+                我的收藏
+            </Menu.Item>
+            <Menu.Item>
+                <VscAccount />
+                账号设置
+            </Menu.Item>
+            <Menu.Item>
+                <BiLogOutCircle />
+                退出登陆
+            </Menu.Item>
+        </Menu>
+    )
+}
+
+const Layout = (props: HTMLAttributes<HTMLDivElement>) => {
     const { children } = props
     return (
         <div
             style={{
                 width: 930,
-                margin: '0 auto'
+                margin: '0 auto',
             }}
         >
             <div
@@ -63,7 +72,7 @@ const Layout = (props) => {
                         <BsBell />
                     </HeaderMenu.Item>
                     <HeaderMenu.Item
-                        popup={menu}
+                        popup={<PrimaryMenu />}
                         popupOffset={[10, 10]}
                         activeItem={<RiUserSmileFill />}
                     >
